@@ -1,0 +1,12 @@
+name: BukkitAPI
+version: 1.0
+main: net.neferett.linaris.BukkitAPI
+author: Neferett
+depend: [ProtocolLib]
+commands:
+  lag:
+  reboot:
+  hub:
+  lobby:
+  test:
+  sendsignal:
