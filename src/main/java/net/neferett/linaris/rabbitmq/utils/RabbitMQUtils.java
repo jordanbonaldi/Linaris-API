@@ -13,7 +13,7 @@ public class RabbitMQUtils {
 	private static Connection	connection;
 	private static String		rabbitHost		= "149.202.65.5";
 
-	private static String		rabbitPassword	= "NONE";
+	private static String		rabbitPassword	= "d8F3uN5r";
 
 	private static String		rabbitUsername	= "linaris";
 

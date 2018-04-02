@@ -70,6 +70,10 @@ public abstract class API extends JavaPlugin {
 		return this.handleranks;
 	}
 
+	public ServerInfo getInfo() {
+		return this.info;
+	}
+
 	public void handleWorld() {
 		this.w = Bukkit.getWorld("world");
 		this.w.setGameRuleValue("doDaylightCycle", "false");

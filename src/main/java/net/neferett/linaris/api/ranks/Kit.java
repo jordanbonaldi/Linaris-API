@@ -114,7 +114,7 @@ public class Kit extends ObjectSerializable {
 	public String SerializeItems() {
 		final StringBuilder a = new StringBuilder();
 
-		this.getItems().forEach(e -> {
+		this.getItems().stream().filter(i -> i != null).collect(Collectors.toList()).forEach(e -> {
 			a.append(e.getTypeId() + ":" + e.getAmount() + ":" + e.getDurability() + ":"
 					+ (e.getEnchantments().size() >= 1 ? this.SerializeEnchant(e) : ""));
 			a.append(this.sepString);

@@ -29,9 +29,6 @@ public class PlayerLocal extends PlayerDataAbstract {
 
 		final PlayerData pd = BukkitAPI.get().getPlayerDataManager().getPlayerData(player);
 
-		System.out.println(pd == null);
-		System.out.println(pd.getRank() == null);
-
 		this.teamname = pd.getRank().getTablistlvl() + this.playerID;
 
 		if (this.teamname.length() > 15)

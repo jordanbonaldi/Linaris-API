@@ -3,6 +3,7 @@ package net.neferett.linaris.commands;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import lombok.Getter;
@@ -58,7 +59,7 @@ public class RankCommand extends CommandHandler {
 
 			@Override
 			public void editAttribute(final Player p, final List<String> arg) {
-				this.attribute = null;
+				this.attribute = arg.get(0).charAt(0);
 			}
 
 		}), COLORLOGO("logocolor", new ActionRanks<String, String>() {
@@ -220,10 +221,8 @@ public class RankCommand extends CommandHandler {
 	@Override
 	public void cmd(final Players player, final String cmd, final List<String> args) {
 
-		System.out.println(args.get(0));
-
 		if (args.get(1).equals("edit")) {
-			RanksNeeds.getValueByName(args.get(2)).getAction().editAttribute(player.getPlayer(),
+			RanksNeeds.getValueByName(args.get(2)).getAction().editAttribute(Bukkit.getPlayer(player.getName()),
 					args.subList(3, args.size()));
 			player.sendMessage("Value : " + args.get(2) + " maintenant : "
 					+ RanksNeeds.getValueByName(args.get(2)).getAction().getWithModification());
