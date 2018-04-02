@@ -2,6 +2,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\mist
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\gui\GuiUpdateEvent.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\commands\InvseeCommand.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\moneys\Promo.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\ranks\Kit.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\specialitems\SpecialItemSuperCooldownIndicatorRunnable.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\API.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\server\ProxiedPlayer.java
@@ -65,6 +66,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disg
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\mistery\mounts\MountsItem.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\moneys\Multiplier.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\utilities\BaseDisguiseCommand.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\ranks\Salary.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\customevents\events\ArrowHitBlockEvent.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\PlayersHandler\Players.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\PetWolf.java
@@ -81,6 +83,8 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\logo
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghostplayers\events\ActionOnPlayerJoin.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\listeners\PlayerChatEvent.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\mistery\mounts\mounts\CaveSpider\CaveSpiderMount.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\commands\RankCommand.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\ranks\RankAPI.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\Pet.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\disguisetypes\watchers\WolfWatcher.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\json\CDL.java
@@ -160,7 +164,6 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghos
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghostplayers\events\ActionOnPlayerSneak.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghostplayers\GhostManager.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\VectorUtils.java
-C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\RankAPI.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghostplayers\events\ActionOnPlayerSprint.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\specialitems\SpecialItemPlayerInteractEntityListener.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\QueueUtils.java
@@ -206,6 +209,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\util
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\TabListUtils.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\PetEnderMite.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\disguisetypes\watchers\AgeableWatcher.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\ObjectSerializable.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\utilities\LibsProfileLookup.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\PetWither.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\inventory\InstantBuyGui.java
@@ -283,6 +287,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\logo
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\json\CookieList.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\StatusBarAPI.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\PetListener.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\ranks\ObjectDataView.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\tasksmanager\ParticleEffectOnEntityRunnable.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\PlayerUtils.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\json\JSONStringer.java
@@ -301,6 +306,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\ghos
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\json\JSONTokener.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\ItemStackUtils.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\db\redis\RedisRepository.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\ranks\RankManager.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\rabbitmq\PlayerEffectMessaging.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\pets\PetCow.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\DisguiseListener.java
@@ -313,7 +319,6 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\util
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\commands\LogoCommand.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\spectator\SpectatorManager.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\DisguiseAPI.java
-C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\Rank.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disguises\disguisetypes\PlayerDisguise.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\TitleUtils.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\db\Database.java
@@ -331,6 +336,7 @@ C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\disg
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\mistery\mounts\MountFlags.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\commands\TPCommands.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\commands\SendSignalCommand.java
+C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\ObjectDataBaseManagement.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\api\PlayerDataManager.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\listeners\PlayerListener.java
 C:\Users\Neferett\Desktop\Linaris\Bukkit\src\main\java\net\neferett\linaris\utils\json\JSONWriter.java

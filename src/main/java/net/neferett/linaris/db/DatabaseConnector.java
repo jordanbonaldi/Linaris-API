@@ -12,6 +12,8 @@ public abstract class DatabaseConnector {
 
 	public abstract Jedis getBungeeResource();
 
+	public abstract Jedis getRank();
+
 	public abstract Jedis getResource();
 
 	public abstract Jedis getTokenResource();

@@ -12,6 +12,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.neferett.linaris.BukkitAPI;
 import net.neferett.linaris.api.moneys.FinancialCallback;
 import net.neferett.linaris.api.moneys.Multiplier;
+import net.neferett.linaris.api.ranks.RankAPI;
+import net.neferett.linaris.api.ranks.RankManager;
 import redis.clients.jedis.Jedis;
 
 public class PlayerData extends PlayerDataAbstract {
@@ -155,6 +157,12 @@ public class PlayerData extends PlayerDataAbstract {
 		return this.getDouble("coins");
 	}
 
+	public RankAPI getGeneralRank() {
+		if (!this.contains("rank"))
+			this.set("rank", Integer.toString(0));
+		return RankManager.getInstance().getRank(this.getInt("rank"));
+	}
+
 	@Override
 	public Set<String> getKeys() {
 		this.refreshIfNeeded();
@@ -171,23 +179,16 @@ public class PlayerData extends PlayerDataAbstract {
 		return this.playername;
 	}
 
-	public Rank getPRank() {
-		if (!this.contains("rank"))
-			this.set("rank", Integer.toString(0));
-		return Rank.get(this.getInt("rank"));
-	}
-
 	public RankAPI getRank() {
-		if (BukkitAPI.get().isApi() && API.getInstance() != null && API.getInstance().getHandleRank()
-				&& this.getPRank().getModerationLevel() < 1) {
-			if (!this.contains(API.getInstance().getGame() + "-rank"))
-				this.set(API.getInstance().getGame() + "-rank", "100");
-			return API.getInstance().getRank(this.getInt(API.getInstance().getGame() + "-rank"));
-		} else {
-			if (this.cacheRank == null || this.cacheRank.getName() != this.getPRank().getName())
-				this.cacheRank = new RankAPI(this.getPRank());
-			return this.cacheRank;
-		}
+		if (this.cacheRank == null)
+			if (BukkitAPI.get().isApi() && API.getInstance() != null && API.getInstance().getHandleRank()
+					&& this.getGeneralRank().getModerationLevel() < 1) {
+				if (!this.contains(API.getInstance().getGame() + "-rank"))
+					this.set(API.getInstance().getGame() + "-rank", "100");
+				this.cacheRank = RankManager.getInstance().getRank(this.getInt(API.getInstance().getGame() + "-rank"));
+			} else
+				this.cacheRank = this.getGeneralRank();
+		return this.cacheRank;
 	}
 
 	public long getRankFinish() {
@@ -324,14 +325,14 @@ public class PlayerData extends PlayerDataAbstract {
 			this.set("rank", Integer.toString(rank));
 	}
 
-	public void setRank(final Rank rank) {
-		this.set("rank", Integer.toString(rank.getID()));
+	public void setRank(final RankAPI rank) {
+		this.set("rank", Integer.toString(rank.getId()));
 		if (this.contains("rankFinish"))
 			this.remove("rankFinish");
 	}
 
-	public void setRankTime(final Rank rank, final long days) {
-		this.set("rank", Integer.toString(rank.getID()));
+	public void setRankTime(final RankAPI rank, final long days) {
+		this.set("rank", Integer.toString(rank.getId()));
 		if (this.contains("rankFinish"))
 			if (this.getLong("rankFinish") == 0)
 				this.set("rankFinish", Long.toString(System.currentTimeMillis() + days * 86400000));

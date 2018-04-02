@@ -2,9 +2,7 @@ package net.neferett.linaris.api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -26,16 +24,14 @@ public abstract class API extends JavaPlugin {
 		return instance;
 	}
 
-	private boolean				annonce;
-	private final String		game;
-	private boolean				handleranks;
-	private ServerInfo			info;
-	private final String		mapname;
-	private final int			maxplayer;
+	private boolean			annonce;
+	private final String	game;
+	private boolean			handleranks;
+	private ServerInfo		info;
+	private final String	mapname;
+	private final int		maxplayer;
 
-	private final List<RankAPI>	ranks	= new ArrayList<>();
-
-	protected World				w;
+	protected World			w;
 
 	public API(final String game, final String mapname, final int maxplayer) {
 		instance = this;
@@ -55,15 +51,7 @@ public abstract class API extends JavaPlugin {
 		objective21.setDisplayName("§c❤");
 	}
 
-	public void addRank(final RankAPI r) {
-		this.ranks.add(r);
-	}
-
 	public abstract void addRanks();
-
-	public void addRanks(final RankAPI... r) {
-		this.ranks.addAll(Arrays.asList(r));
-	}
 
 	public void closeServer() {
 		this.info.setCanJoin(false, false);
@@ -80,14 +68,6 @@ public abstract class API extends JavaPlugin {
 
 	public boolean getHandleRank() {
 		return this.handleranks;
-	}
-
-	public RankAPI getRank(final int id) {
-		return this.ranks.stream().filter(r -> r.getId() == id).findFirst().orElse(null);
-	}
-
-	public RankAPI getRank(final String id) {
-		return this.ranks.stream().filter(r -> r.getName().equalsIgnoreCase(id)).findFirst().orElse(null);
 	}
 
 	public void handleWorld() {

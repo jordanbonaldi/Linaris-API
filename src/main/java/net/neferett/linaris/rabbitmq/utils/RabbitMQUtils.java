@@ -10,41 +10,46 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class RabbitMQUtils {
 
-	private static Connection connection;
+	private static Connection	connection;
+	private static String		rabbitHost		= "149.202.65.5";
+
+	private static String		rabbitPassword	= "NONE";
+
+	private static String		rabbitUsername	= "linaris";
+
 	public static Connection getConnection() {
 		return connection;
 	}
-	
+
+	public static String getRabbitHost() {
+		return rabbitHost;
+	}
+
+	public static String getRabbitPassword() {
+		return rabbitPassword;
+	}
+
+	public static String getRabbitUsername() {
+		return rabbitUsername;
+	}
+
 	public static void inits() {
-		ConnectionFactory factory = new ConnectionFactory();
-	    factory.setHost(getRabbitHost());
+		final ConnectionFactory factory = new ConnectionFactory();
+		factory.setHost(getRabbitHost());
 		factory.setUsername(getRabbitUsername());
 		factory.setPassword(getRabbitPassword());
-		//factory.setVirtualHost("/");
+		// factory.setVirtualHost("/");
 		factory.setAutomaticRecoveryEnabled(true);
 		factory.setNetworkRecoveryInterval(10000);
-	    try {
+		try {
 			connection = factory.newConnection();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 			Bukkit.getServer().shutdown();
-		} catch (TimeoutException e) {
+		} catch (final TimeoutException e) {
 			e.printStackTrace();
 			Bukkit.getServer().shutdown();
 		}
 	}
-	
-	private static String rabbitHost = "149.202.65.5";
-	public static String getRabbitHost() {
-		return rabbitHost;
-	}
-	private static String rabbitUsername = "linaris";
-	public static String getRabbitUsername() {
-		return rabbitUsername;
-	}
-	private static String rabbitPassword = "d8F3uN5r";
-	public static String getRabbitPassword() {
-		return rabbitPassword;
-	}
-	
+
 }

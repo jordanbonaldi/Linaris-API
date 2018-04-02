@@ -7,7 +7,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.neferett.linaris.BukkitAPI;
 import net.neferett.linaris.api.PlayerData;
-import net.neferett.linaris.api.Rank;
+import net.neferett.linaris.api.ranks.RankAPI;
 import redis.clients.jedis.Jedis;
 
 public class EpicCoinsManager {
@@ -73,9 +73,9 @@ public class EpicCoinsManager {
 		}
 
 		final PlayerData data = this.api.getPlayerDataManager().getPlayerData(joueur);
-		final Rank rank = data.getPRank();
+		final RankAPI rank = data.getRank();
 
-		double multiply = rank.getECMultiplier() + data.getBooster();
+		double multiply = rank.getMultiplier() + data.getBooster();
 
 		multiply = multiply < 1 ? 1 : multiply;
 

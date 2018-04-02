@@ -41,8 +41,8 @@ public class ColorEffectsItems extends InstantShopItem {
 		if (this.pd.getRank().getVipLevel() == 3)
 			return Arrays
 					.asList("",
-							"§7Aperçu§f:", this.pd.getRank().getRealPrefix().contains("%c")
-									? this.pd.getRank().getRealPrefix()
+							"§7Aperçu§f:", this.pd.getRank().getPrefix().contains("%c")
+									? this.pd.getRank().getPrefix()
 											.replace(
 													"%c", !this.pd
 															.contains(
@@ -62,12 +62,13 @@ public class ColorEffectsItems extends InstantShopItem {
 		else
 			return Arrays
 					.asList("", "§7Aperçu§f:",
-							this.pd.getRank().getRealPrefix().contains("%c")
-									&& this.pd.getRank().getRealPrefix()
-											.contains("%s")
-													? this.pd.getRank().getRealPrefix()
-															.replace("%c",
-																	!this.pd.contains("logocolor") ? "§e" + this.color
+							this.pd.getRank().getPrefix().contains("%c") && this.pd.getRank().getPrefix().contains("%s")
+									? this.pd.getRank().getPrefix()
+											.replace(
+													"%c", !this.pd
+															.contains(
+																	"logocolor")
+																			? "§e" + this.color
 																			: (this.pd.get("logocolor").length() > 2
 																					? this.pd.get("logocolor")
 																							.substring(0,
@@ -77,10 +78,9 @@ public class ColorEffectsItems extends InstantShopItem {
 																											- 2)
 																					: this.pd.get("logocolor"))
 																					+ this.color)
-															.replace("%s",
-																	this.colorname.contains("Magic") ? "d" : this.logo)
-															+ this.name
-													: "§cAucun aperçu disponible");
+											.replace("%s", this.colorname.contains("Magic") ? "d" : this.logo)
+											+ this.name
+									: "§cAucun aperçu disponible");
 	}
 
 	@Override

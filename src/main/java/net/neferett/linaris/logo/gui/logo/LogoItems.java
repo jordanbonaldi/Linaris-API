@@ -37,11 +37,12 @@ public class LogoItems extends InstantShopItem {
 	}
 
 	public List<String> loadPreview() {
-		return Arrays.asList("", "§7Aperçu§f:",
-				this.pd.getRank().getRealPrefix().contains("%c") && this.pd.getRank().getRealPrefix().contains("%s")
-						? this.pd.getRank().getRealPrefix().replace("%c", this.color).replace("%s",
-								this.color.contains("k") ? "d" : this.logo) + this.name
-						: "§cAucun aperçu disponible");
+		return Arrays
+				.asList("", "§7Aperçu§f:",
+						this.pd.getRank().getPrefix().contains("%c") && this.pd.getRank().getPrefix().contains("%s")
+								? this.pd.getRank().getPrefix().replace("%c", this.color).replace("%s",
+										this.color.contains("k") ? "d" : this.logo) + this.name
+								: "§cAucun aperçu disponible");
 	}
 
 	@Override

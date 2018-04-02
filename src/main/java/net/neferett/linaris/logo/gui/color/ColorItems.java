@@ -39,13 +39,13 @@ public class ColorItems extends InstantShopItem {
 	public List<String> loadPreview() {
 		if (this.pd.getRank().getVipLevel() == 3)
 			return Arrays.asList("", "§7Aperçu§f:",
-					this.pd.getRank().getRealPrefix().contains("%c")
-							? this.pd.getRank().getRealPrefix().replace("%c", this.color) + this.name
+					this.pd.getRank().getPrefix().contains("%c")
+							? this.pd.getRank().getPrefix().replace("%c", this.color) + this.name
 							: "§cAucun aperçu disponible");
 		else
 			return Arrays.asList("", "§7Aperçu§f:",
-					this.pd.getRank().getRealPrefix().contains("%c") && this.pd.getRank().getRealPrefix().contains("%s")
-							? this.pd.getRank().getRealPrefix().replace("%c", this.color).replace("%s",
+					this.pd.getRank().getPrefix().contains("%c") && this.pd.getRank().getPrefix().contains("%s")
+							? this.pd.getRank().getPrefix().replace("%c", this.color).replace("%s",
 									this.color.contains("k") ? "d" : this.logo) + this.name
 							: "§cAucun aperçu disponible");
 	}

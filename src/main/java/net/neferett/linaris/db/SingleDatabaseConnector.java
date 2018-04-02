@@ -13,6 +13,7 @@ public class SingleDatabaseConnector extends DatabaseConnector {
 	protected JedisPool		cachePoolToken;
 	protected JedisPool		mainPool;
 	private final String	masterIp;
+	protected JedisPool		rankPool;
 
 	public SingleDatabaseConnector(final BukkitAPI plugin, final String masterIp, final String password) {
 		this.plugin = plugin;
@@ -39,6 +40,11 @@ public class SingleDatabaseConnector extends DatabaseConnector {
 	}
 
 	@Override
+	public Jedis getRank() {
+		return this.rankPool.getResource();
+	}
+
+	@Override
 	public Jedis getResource() {
 		return this.mainPool.getResource();
 	}
@@ -60,6 +66,7 @@ public class SingleDatabaseConnector extends DatabaseConnector {
 		this.mainPool = new JedisPool(config, mainParts[0], mainPort, 5000, this.password);
 		this.cachePool = new JedisPool(config, mainParts[0], mainPort, 5000, this.password, 1);
 		this.cachePoolToken = new JedisPool(config, mainParts[0], mainPort, 5000, this.password, 2);
+		this.rankPool = new JedisPool(config, mainParts[0], mainPort, 5000, this.password, 8);
 
 		this.plugin.getLogger().info("[Database] Connection initialized.");
 
@@ -70,5 +77,6 @@ public class SingleDatabaseConnector extends DatabaseConnector {
 		this.mainPool.destroy();
 		this.cachePool.destroy();
 		this.cachePoolToken.destroy();
+		this.rankPool.destroy();
 	}
 }

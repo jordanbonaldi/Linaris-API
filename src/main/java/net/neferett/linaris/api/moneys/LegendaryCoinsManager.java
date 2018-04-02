@@ -5,7 +5,7 @@ import java.util.Date;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.neferett.linaris.BukkitAPI;
-import net.neferett.linaris.api.Rank;
+import net.neferett.linaris.api.ranks.RankAPI;
 import redis.clients.jedis.Jedis;
 
 public class LegendaryCoinsManager {
@@ -78,9 +78,9 @@ public class LegendaryCoinsManager {
 			ret.infos.put(this.currentPromo.message, this.currentPromo.multiply);
 		}
 
-		final Rank rank = this.api.getPlayerDataManager().getPlayerData(joueur).getPRank();
+		final RankAPI rank = this.api.getPlayerDataManager().getPlayerData(joueur).getRank();
 
-		double multiply = rank.getLCMultiplier();
+		double multiply = rank.getMultiplier();
 
 		multiply = multiply < 1 ? 1 : multiply;
 

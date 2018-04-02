@@ -12,8 +12,8 @@ import net.neferett.linaris.BukkitAPI;
 import net.neferett.linaris.api.Games;
 import net.neferett.linaris.api.ItemInfo;
 import net.neferett.linaris.api.PlayerData;
-import net.neferett.linaris.api.Rank;
 import net.neferett.linaris.api.ShopItemsManager;
+import net.neferett.linaris.api.ranks.RankAPI;
 import net.neferett.linaris.utils.ShopMessage;
 import net.neferett.linaris.utils.StringUtils;
 import net.neferett.linaris.utils.gui.GuiManager;
@@ -191,7 +191,7 @@ public abstract class MysteryItem {
 
 		if (this.vipLevel != null) {
 
-			final Rank rank = BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName()).getPRank();
+			final RankAPI rank = BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName()).getRank();
 
 			if (this.vipLevel == RankType.MiniVIP)
 				if (rank.getVipLevel() >= 1) {

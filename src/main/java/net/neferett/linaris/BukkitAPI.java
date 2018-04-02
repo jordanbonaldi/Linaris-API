@@ -37,6 +37,7 @@ import net.neferett.linaris.api.ServerInfo;
 import net.neferett.linaris.api.StatsManager;
 import net.neferett.linaris.api.SocketEvent.SendMessage;
 import net.neferett.linaris.api.pets.PetListener;
+import net.neferett.linaris.api.ranks.RankManager;
 import net.neferett.linaris.api.server.ProxyDataManager;
 import net.neferett.linaris.api.server.RPCServersManager;
 import net.neferett.linaris.commands.ColorCommand;
@@ -45,6 +46,7 @@ import net.neferett.linaris.commands.HubCommand;
 import net.neferett.linaris.commands.InvseeCommand;
 import net.neferett.linaris.commands.LagCommand;
 import net.neferett.linaris.commands.LogoCommand;
+import net.neferett.linaris.commands.RankCommand;
 import net.neferett.linaris.commands.RebootCommand;
 import net.neferett.linaris.commands.SendSignalCommand;
 import net.neferett.linaris.commands.TPCommands;
@@ -108,7 +110,9 @@ public class BukkitAPI extends JavaPlugin {
 	private PlayerLocalManager								playerLocalManager;
 	private PlayerManager									pm;
 	private ProxyDataManager								proxyDataManager;
+	private RankManager										rm;
 	private boolean											scoreload;
+
 	private ServerInfo										serverInfos;
 
 	private boolean											serverRegistered;
@@ -178,6 +182,10 @@ public class BukkitAPI extends JavaPlugin {
 		return this.proxyDataManager;
 	}
 
+	public RankManager getRankManager() {
+		return this.rm;
+	}
+
 	public ServerInfo getServerInfos() {
 		return this.serverInfos;
 	}
@@ -240,6 +248,9 @@ public class BukkitAPI extends JavaPlugin {
 				this.registerServer();
 				new RPCServersManager(this.getServerInfos().getServerName());
 				new PlayerEffectMessaging();
+
+				this.rm = new RankManager();
+
 			} catch (final Exception e) {
 				e.printStackTrace();
 				this.reboot();
@@ -327,6 +338,7 @@ public class BukkitAPI extends JavaPlugin {
 		new LogoCommand();
 		new InvseeCommand();
 		new FreezeCommand();
+		new RankCommand();
 		this.pm = new PlayerManager();
 
 		this.enableDisguise();
