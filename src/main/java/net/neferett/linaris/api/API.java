@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,8 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.neferett.linaris.BukkitAPI;
 import net.neferett.linaris.utils.ScoreBoardModule;
 
@@ -26,6 +29,9 @@ public abstract class API extends JavaPlugin {
 
 	private boolean			annonce;
 	private final String	game;
+	@Getter
+	@Setter
+	private GameMode		gamemode;
 	private boolean			handleranks;
 	private ServerInfo		info;
 	private final String	mapname;

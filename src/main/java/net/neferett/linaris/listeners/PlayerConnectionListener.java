@@ -4,7 +4,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -77,10 +76,8 @@ public class PlayerConnectionListener implements Listener {
 			VanishCommand.setInvisible(p);
 		});
 
-		if (BukkitAPI.get().getServerInfos().getServerName().startsWith("fb"))
-			player.setGameMode(GameMode.CREATIVE);
-		else
-			player.setGameMode(GameMode.SURVIVAL);
+		if (BukkitAPI.get().isApi() && API.getInstance().getGamemode() != null)
+			player.setGameMode(API.getInstance().getGamemode());
 
 		BukkitAPI.get().getTasksManager().addTask(() -> {
 
