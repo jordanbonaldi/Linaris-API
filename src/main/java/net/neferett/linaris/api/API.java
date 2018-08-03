@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
@@ -82,6 +83,7 @@ public abstract class API extends JavaPlugin {
 
 	public void handleWorld() {
 		this.w = Bukkit.getWorld("world");
+		this.w.setDifficulty(Difficulty.EASY);
 		this.w.setGameRuleValue("doDaylightCycle", "false");
 		this.w.setGameRuleValue("doFireTick", "false");
 		this.w.setTime(6000);

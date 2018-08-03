@@ -72,7 +72,7 @@ public class ShopMessage {
 	}
 
 	public static void itemNotEnoughTokens(final Player player) {
-		sendToPlayer(player, "§cVous ne poss\u00e9dez pas assez de: §6Tokens§c");
+		sendToPlayer(player, "§cVous ne poss\u00e9dez pas assez de: §6Senzus§c");
 		player.playSound(player.getLocation(), Sound.VILLAGER_NO, 0.5f, 1.0f);
 	}
 

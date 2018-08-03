@@ -46,9 +46,12 @@ public abstract class InstantShopItem {
 	}
 
 	public String getColoredPrice(final Player p) {
-		if (this.priceType == PriceType.EC) return "§e" + this.price + "Coins";
-		else if (this.priceType == PriceType.LC) return "§b" + this.price + "Crédits";
-		else return "§c" + this.price + "Tokens";
+		if (this.priceType == PriceType.EC)
+			return "§e" + this.price + "Coins";
+		else if (this.priceType == PriceType.LC)
+			return "§b" + this.price + "Crédits";
+		else
+			return "§c" + this.price + "Senzus";
 	}
 
 	public List<String> getDescription() {
@@ -75,10 +78,13 @@ public abstract class InstantShopItem {
 
 		final List<String> strings = new ArrayList<>();
 
-		if (this.getDescription() != null && !this.getDescription().isEmpty()) strings.addAll(this.getDescription());
+		if (this.getDescription() != null && !this.getDescription().isEmpty())
+			strings.addAll(this.getDescription());
 		strings.add("");
-		if (this.alreadyHave(pd)) strings.add("§aAcheté");
-		else strings.add("§aClic gauche: débloquer " + this.getColoredPrice(p));
+		if (this.alreadyHave(pd))
+			strings.add("§aAcheté");
+		else
+			strings.add("§aClic gauche: débloquer " + this.getColoredPrice(p));
 
 		meta.setLore(strings);
 
@@ -96,7 +102,8 @@ public abstract class InstantShopItem {
 
 		final List<String> strings = new ArrayList<>();
 
-		if (this.getDescription() != null && !this.getDescription().isEmpty()) strings.addAll(this.getDescription());
+		if (this.getDescription() != null && !this.getDescription().isEmpty())
+			strings.addAll(this.getDescription());
 
 		strings.add("");
 		strings.add("§6Prix " + this.getColoredPrice(p));
@@ -136,19 +143,22 @@ public abstract class InstantShopItem {
 				ShopMessage.itemBoughtEC(p, ChatColor.stripColor(this.getName()), this.price);
 				pd.withdrawCoins(this.price, null);
 				this.onBuy(pd);
-			} else ShopMessage.itemNotEnoughGolds(Bukkit.getPlayer(pd.getPlayername()));
+			} else
+				ShopMessage.itemNotEnoughGolds(Bukkit.getPlayer(pd.getPlayername()));
 
 		} else if (this.priceType == PriceType.LC) {
 			if (pd.getLC() >= this.price) {
 				ShopMessage.itemBoughtLC(p, ChatColor.stripColor(this.getName()), this.price);
 				pd.withdrawLC(this.price, null);
 				this.onBuy(pd);
-			} else ShopMessage.itemNotEnoughLegendaryCoins(p);
+			} else
+				ShopMessage.itemNotEnoughLegendaryCoins(p);
 		} else if (pd.getTokens() >= this.price) {
 			ShopMessage.itemBoughtTokens(p, ChatColor.stripColor(this.getName()), this.price);
 			pd.setInt("tokens", (int) (pd.getTokens() - this.price));
 			this.onBuy(pd);
-		} else ShopMessage.itemNotEnoughTokens(p);
+		} else
+			ShopMessage.itemNotEnoughTokens(p);
 	}
 
 	public void useOrBuy(final PlayerData pd, final GuiScreen last) {
@@ -157,7 +167,8 @@ public abstract class InstantShopItem {
 		if (this.alreadyHave(pd)) {
 			this.onUse(pd);
 			return;
-		} else GuiManager.openGui(new InstantBuyGui(p, this, last));
+		} else
+			GuiManager.openGui(new InstantBuyGui(p, this, last));
 
 	}
 

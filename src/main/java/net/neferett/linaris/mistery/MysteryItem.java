@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import lombok.Setter;
 import net.neferett.linaris.BukkitAPI;
 import net.neferett.linaris.api.Games;
 import net.neferett.linaris.api.ItemInfo;
@@ -22,7 +23,7 @@ import net.neferett.linaris.utils.gui.GuiScreen;
 public abstract class MysteryItem {
 
 	public enum PriceType {
-		EC, LC
+		EC, LC, Senzus
 	}
 
 	public enum RankType {
@@ -38,7 +39,8 @@ public abstract class MysteryItem {
 
 	PriceType	priceType;
 
-	RankType	vipLevel;
+	@Setter
+	int			vipLevel;
 
 	public MysteryItem(final String id, final String name, final PriceType priceType, final double price,
 			final String description, final ItemStack itemUI) {
@@ -55,21 +57,23 @@ public abstract class MysteryItem {
 	public String getColoredPrice() {
 		if (this.priceType == PriceType.EC)
 			return "§e" + this.price + "Coins";
-		else
+		else if (this.priceType == PriceType.LC)
 			return "§b" + this.price + "Crédits";
+		else
+			return "§e" + this.price + "Senzus";
 	}
 
 	public String getColoredRank() {
-		if (this.vipLevel == null)
-			return "§7";
-		if (this.vipLevel == RankType.MiniVIP)
-			return "§fMiniVIP";
-		else if (this.vipLevel == RankType.VIP)
-			return "§fVIP";
-		else if (this.vipLevel == RankType.VIPPLUS)
-			return "§bVIP+";
-		else if (this.vipLevel == RankType.EPICVIP)
-			return "§aHéro";
+		if (this.vipLevel == 1)
+			return "§f";
+		else if (this.vipLevel == 2)
+			return "§eSaiyan";
+		else if (this.vipLevel == 3)
+			return "§9Kaïo Shin";
+		else if (this.vipLevel == 4)
+			return "§5Hakaï Shin";
+		else if (this.vipLevel == 5)
+			return "§dDaï Shinkan";
 		else
 			return "§7";
 	}
@@ -100,7 +104,7 @@ public abstract class MysteryItem {
 		if (this.getDescription() != null && this.getDescription().length() > 1)
 			strings.addAll(StringUtils.wrap(StringUtils.wrap(this.getDescription(), 25)));
 
-		if (this.vipLevel != null)
+		if (this.vipLevel != 0)
 			strings.add("§cRéservé aux " + this.getColoredRank());
 		else {
 			strings.add("");
@@ -153,17 +157,9 @@ public abstract class MysteryItem {
 		return this.priceType;
 	}
 
-	public RankType getVipLevel() {
-		return this.vipLevel;
-	}
-
 	public abstract void onRemove(Player p);
 
 	public abstract void onUse(Player p, boolean save);
-
-	public void setVipLevel(final RankType vipLevel) {
-		this.vipLevel = vipLevel;
-	}
 
 	public void testBuy(final Player p) {
 
@@ -189,32 +185,39 @@ public abstract class MysteryItem {
 
 	public void useOrBuy(final Player p, final GuiScreen last) {
 
-		if (this.vipLevel != null) {
+		if (this.vipLevel != 0) {
 
 			final RankAPI rank = BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName()).getRank();
 
-			if (this.vipLevel == RankType.MiniVIP)
+			if (this.vipLevel == 1)
 				if (rank.getVipLevel() >= 1) {
 					this.onUse(p, true);
 					return;
 				} else
 					p.sendMessage("§cRéservé aux " + this.getColoredRank());
 
-			if (this.vipLevel == RankType.VIP)
+			if (this.vipLevel == 2)
 				if (rank.getVipLevel() >= 2) {
 					this.onUse(p, true);
 					return;
 				} else
 					p.sendMessage("§cRéservé aux " + this.getColoredRank());
 
-			if (this.vipLevel == RankType.VIPPLUS)
+			if (this.vipLevel == 3)
 				if (rank.getVipLevel() >= 3) {
 					this.onUse(p, true);
 					return;
 				} else
 					p.sendMessage("§cRéservé aux " + this.getColoredRank());
 
-			if (this.vipLevel == RankType.EPICVIP)
+			if (this.vipLevel == 4)
+				if (rank.getVipLevel() >= 4) {
+					this.onUse(p, true);
+					return;
+				} else
+					p.sendMessage("§cRéservé aux " + this.getColoredRank());
+
+			if (this.vipLevel == 5)
 				if (rank.getVipLevel() >= 4) {
 					this.onUse(p, true);
 					return;

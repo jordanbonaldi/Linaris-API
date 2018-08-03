@@ -35,7 +35,6 @@ import net.neferett.linaris.api.PlayerDataManager;
 import net.neferett.linaris.api.PlayerLocalManager;
 import net.neferett.linaris.api.ServerInfo;
 import net.neferett.linaris.api.StatsManager;
-import net.neferett.linaris.api.SocketEvent.SendMessage;
 import net.neferett.linaris.api.pets.PetListener;
 import net.neferett.linaris.api.ranks.RankManager;
 import net.neferett.linaris.api.server.ProxyDataManager;
@@ -293,9 +292,6 @@ public class BukkitAPI extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-
-		new SendMessage("163.172.71.30", 12000,
-				"stop " + this.getDataFolder().getAbsolutePath().replace(this.getDataFolder().getPath(), "\n")).build();
 
 		try {
 			final JSONObject object = new JSONObject();

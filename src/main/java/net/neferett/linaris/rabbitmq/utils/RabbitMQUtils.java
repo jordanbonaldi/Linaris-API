@@ -13,9 +13,9 @@ public class RabbitMQUtils {
 	private static Connection	connection;
 	private static String		rabbitHost		= "149.202.65.5";
 
-	private static String		rabbitPassword	= "d8F3uN5r";
+	private static String		rabbitPassword	= "vrlctuk";
 
-	private static String		rabbitUsername	= "linaris";
+	private static String		rabbitUsername	= "admin";
 
 	public static Connection getConnection() {
 		return connection;

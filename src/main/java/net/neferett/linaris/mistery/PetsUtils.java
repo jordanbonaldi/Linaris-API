@@ -29,36 +29,46 @@ import net.neferett.linaris.mistery.MysteryItem.RankType;
 
 @SuppressWarnings("deprecation")
 public enum PetsUtils {
-	Wither("Wither",4500,PriceType.LC,RankType.EPICVIP,new ItemStack(383,1,(short) 58),PetWither.class),
-	Creeper("Creeper",2500,PriceType.LC,RankType.EPICVIP,new ItemStack(383,1,(short) 50),PetCreeper.class),
-	Zombie("Zombie",2500,PriceType.LC,RankType.VIPPLUS,new ItemStack(383,1,(short) 54),PetZombie.class),
-	Villager("Villageois",2500,PriceType.LC,RankType.VIP,new ItemStack(383,1,(short) 120),PetVillager.class),
-	Cow("Vache",1300,PriceType.LC,null,new ItemStack(383,1,(short) 92),PetCow.class),
-	MooshroomCow("Vache champignon",1300,PriceType.LC,null,new ItemStack(383,1,(short) 96),PetMushroomCow.class),
-	Magma("MagmaCube",1400,PriceType.LC,null,new ItemStack(383,1,(short) 62),PetMagMaCube.class),
-	Lapin("Lapin",1500,PriceType.LC,RankType.VIP,new ItemStack(383,1,(short) 11),PetLapin.class),
-	Pig("Cochon",1250,PriceType.LC,null,new ItemStack(383,1,(short)90),PetPig.class),
-	Sheep("Mouton",1350,PriceType.LC,null,new ItemStack(383,1,(short)91),PetSheep.class),
-	Chat("Chat",1400,PriceType.LC,null,new ItemStack(383,1,(short)90),PetOcelot.class),
-	Slime("Slime",1200,PriceType.LC,null,new ItemStack(383,1,(short)55),PetSlime.class),
-	Wolf("Chien",1500,PriceType.LC,null,new ItemStack(383,1,(short)95),PetWolf.class),
-	SilverFish("SilverFish",1200,PriceType.LC,null,new ItemStack(383,1,(short)60),PetSilverFish.class),
-	EnderMite("Endermite",1200,PriceType.LC,null,new ItemStack(383,1,(short)67),PetEnderMite.class),
-	Chicken("Poulet",1350,PriceType.LC,null,new ItemStack(383,1,(short)93),PetChicken.class),
-	Bat("Chauve-Souris",1300,PriceType.LC,null,new ItemStack(383,1,(short)65),PetBat.class);
+	Bat("Chauve-Souris", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 65), PetBat.class),
+	Chat("Chat", 1400, PriceType.EC, null, new ItemStack(383, 1, (short) 90), PetOcelot.class),
+	Chicken("Poulet", 1350, PriceType.EC, null, new ItemStack(383, 1, (short) 93), PetChicken.class),
+	Cow("Vache", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 92), PetCow.class),
+	Creeper("Creeper", 2500, PriceType.EC, RankType.EPICVIP, new ItemStack(383, 1, (short) 50), PetCreeper.class),
+	EnderMite("Endermite", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 67), PetEnderMite.class),
+	Lapin("Lapin", 1500, PriceType.EC, RankType.VIP, new ItemStack(383, 1, (short) 11), PetLapin.class),
+	Magma("MagmaCube", 1400, PriceType.EC, null, new ItemStack(383, 1, (short) 62), PetMagMaCube.class),
+	MooshroomCow("Vache champignon", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 96), PetMushroomCow.class),
+	Pig("Cochon", 1250, PriceType.EC, null, new ItemStack(383, 1, (short) 90), PetPig.class),
+	Sheep("Mouton", 1350, PriceType.EC, null, new ItemStack(383, 1, (short) 91), PetSheep.class),
+	SilverFish("SilverFish", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 60), PetSilverFish.class),
+	Slime("Slime", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 55), PetSlime.class),
+	Villager("Villageois", 2500, PriceType.EC, RankType.VIP, new ItemStack(383, 1, (short) 120), PetVillager.class),
+	Wither("Wither", 4500, PriceType.EC, RankType.EPICVIP, new ItemStack(383, 1, (short) 58), PetWither.class),
+	Wolf("Chien", 1500, PriceType.EC, null, new ItemStack(383, 1, (short) 95), PetWolf.class),
+	Zombie("Zombie", 2500, PriceType.EC, RankType.VIPPLUS, new ItemStack(383, 1, (short) 54), PetZombie.class);
 
+	public static ItemStack createItem(final Material leatherPiece, final String displayName, final Color color) {
+		final ItemStack item = new ItemStack(leatherPiece);
+		final LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+		meta.setDisplayName(displayName);
+		if (color != null)
+			meta.setColor(Color.fromRGB(color.asRGB()));
+		item.setItemMeta(meta);
+		return item;
+	}
 
-	
-	private Disguise disguise;
-	private String name;
-	private int price;
-	private PriceType priceType;
-	private RankType vipLevel;
-	private ItemStack itemStack;
-	private Class<? extends Pet> type;
-	MysteryItem item;
+	private Disguise				disguise;
+	MysteryItem						item;
+	private ItemStack				itemStack;
+	private String					name;
+	private int						price;
+	private PriceType				priceType;
+	private Class<? extends Pet>	type;
 
-	private PetsUtils(String name,int price,PriceType priceType,RankType vipLevel,ItemStack itemStack,Class<? extends Pet> type) {
+	private RankType				vipLevel;
+
+	private PetsUtils(final String name, final int price, final PriceType priceType, final RankType vipLevel,
+			final ItemStack itemStack, final Class<? extends Pet> type) {
 		this.name = name;
 		this.price = price;
 		this.priceType = priceType;
@@ -67,55 +77,44 @@ public enum PetsUtils {
 		this.type = type;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public int getPrice() {
-		return price;
-	}
-	
-	public PriceType getPriceType() {
-		return priceType;
-	}
-	
-	public RankType getVipLevel() {
-		return vipLevel;
-	}
-	
-	public ItemStack getItemStack() {
-		return itemStack;
-	}
-	
-	public void setItem(MysteryItem item) {
-		this.item = item;
-	}
-	
-	public MysteryItem getItem() {
-		return item;
-	}
-	
-	public Class<? extends Pet> getType() {
-		return type;
-	}
-	
-	public void setDisguise(Disguise disguise) {
-		this.disguise = disguise;
-	}
-	
 	public Disguise getDisguise() {
-		return disguise.clone();
+		return this.disguise.clone();
 	}
 
-	public static ItemStack createItem(Material leatherPiece, String displayName, Color color) {
-		ItemStack item = new ItemStack(leatherPiece);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		meta.setDisplayName(displayName);
-		if (color != null)
-		meta.setColor(Color.fromRGB(color.asRGB()));
-		item.setItemMeta(meta);
-		return item;
+	public MysteryItem getItem() {
+		return this.item;
+	}
+
+	public ItemStack getItemStack() {
+		return this.itemStack;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public int getPrice() {
+		return this.price;
+	}
+
+	public PriceType getPriceType() {
+		return this.priceType;
+	}
+
+	public Class<? extends Pet> getType() {
+		return this.type;
+	}
+
+	public RankType getVipLevel() {
+		return this.vipLevel;
+	}
+
+	public void setDisguise(final Disguise disguise) {
+		this.disguise = disguise;
+	}
+
+	public void setItem(final MysteryItem item) {
+		this.item = item;
 	}
 
 }
-

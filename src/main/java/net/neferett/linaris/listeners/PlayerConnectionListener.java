@@ -27,8 +27,8 @@ import net.neferett.linaris.utils.file;
 import net.neferett.linaris.utils.tasksmanager.TaskManager;
 
 public class PlayerConnectionListener implements Listener {
-	static String	footer	= "§6Notre site§f: §bhttp://linaris.fr/ §f- §6Notre Twitter§f: §c@LinarisMC \n §6Boutique sur§f: §b§nhttp://linaris.fr/store/";
-	static String	header	= "§eVous êtes connecté sur §aplay.linaris.fr \n §6Rejoignez nous sur TeamSpeak§f: §bts.linaris.fr";
+	static String	footer	= "§6Notre site§f: §bhttp://universeven.fr/ §f- §6Notre Twitter§f: §c@LoghosLRS \n §6Boutique sur§f: §b§nhttp://universeven.fr/shop/";
+	static String	header	= "§eVous êtes connecté sur §aplay.universeven.fr \n §6Rejoignez nous sur TeamSpeak§f: §bts.universeven.fr";
 
 	@EventHandler
 	public void ConnectionSpec(final SoloConnectionEvent e) {
@@ -49,16 +49,11 @@ public class PlayerConnectionListener implements Listener {
 		event.setJoinMessage(null);
 
 		if (!player.getAddress().getAddress().getHostAddress().equals("149.202.65.5")) {
-			event.getPlayer().kickPlayer("§cMerci de vous connecter avec play.linaris.fr !");
+			event.getPlayer().kickPlayer("§cMerci de vous connecter avec play.universeven.fr !");
 			return;
 		}
 
 		final PlayerData pd = BukkitAPI.get().getPlayerDataManager().getPlayerData(player.getName());
-
-		if (pd.contains("invisible") && pd.getBoolean("invisible")) {
-			VanishCommand.setInvisible(player);
-			return;
-		}
 
 		if (BukkitAPI.get().isApi()) {
 			if ((pd.getRank().getVipLevel() >= 4 || pd.getRank().getModerationLevel() >= 1)
@@ -66,6 +61,11 @@ public class PlayerConnectionListener implements Listener {
 				Bukkit.broadcastMessage(pd.getRank().getPrefix(pd) + player.getName() + " §6§oa rejoint !");
 			BukkitAPI.get().getPlayerLocalManager().getPlayerLocal(player.getName())
 					.setPrefix(pd.getRank().getTablist(pd));
+		}
+
+		if (pd.contains("invisible") && pd.getBoolean("invisible")) {
+			VanishCommand.setInvisible(player);
+			return;
 		}
 
 		final Predicate<Player> plpred = p -> BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName())

@@ -28,36 +28,56 @@ import net.neferett.linaris.mistery.mounts.mounts.zombiehorse.ZombieHorseMount;
 @SuppressWarnings("deprecation")
 public enum MountsUtils {
 
-	Sheep("Mouton",1500,PriceType.LC,RankType.VIP,new ItemStack(35,1,(short) 10),SuperSheep.class),
-	Wither("Wither",5000,PriceType.LC,RankType.EPICVIP,new ItemStack(397,1,(short) 1),WitherMount.class),
-	Blaze("Blaze",3000,PriceType.LC,RankType.VIPPLUS,new ItemStack(369),BlazeMount.class),
-	SKELETONHORSE("Cheval Squelette",2000,PriceType.LC,RankType.VIPPLUS,new ItemStack(397, 1, (short) 1),SkeletonHorseMount.class),
-	ZOMBIEHORSE("Cheval Zombie",1500,PriceType.LC,RankType.EPICVIP,new ItemStack(397, 1,(short)2),ZombieHorseMount.class),
-	Spider("Araignée",2500,PriceType.LC,null,new ItemStack(30),SpiderMount.class),
-	Cow("Vache",2500,PriceType.LC,null,new ItemStack(334),CowMount.class),
-	Golem("Golem",2500,PriceType.LC,null,new ItemStack(265),IronGolemMount.class),
-	Dog("Chien",2500,PriceType.LC,null,new ItemStack(352),WolfMount.class),
-	Pig("Cochon",2000,PriceType.LC,null,new ItemStack(398),PigMount.class),
-	Chicken("Poulet",2000,PriceType.LC,null,new ItemStack(344),ChickenMount.class),
-	Rabbit("Lapin",1500,PriceType.LC,null,new ItemStack(415),RabbitMount.class),
-	Slime("Slime",1500,PriceType.LC,null,new ItemStack(341),SlimeMount.class),
-	HORSE("Cheval",2500,PriceType.LC,null,new ItemStack(383, 1, (short)100),HorseMount.class),
-	CaveSpider("CaveSpider",2000,PriceType.LC,null,new ItemStack(375),CaveSpiderMount.class);
+	Blaze("Blaze", 3000, PriceType.LC, RankType.VIPPLUS, new ItemStack(369), BlazeMount.class),
+	CaveSpider("CaveSpider", 2000, PriceType.LC, null, new ItemStack(375), CaveSpiderMount.class),
+	Chicken("Poulet", 2000, PriceType.LC, null, new ItemStack(344), ChickenMount.class),
+	Cow("Vache", 2500, PriceType.LC, null, new ItemStack(334), CowMount.class),
+	Dog("Chien", 2500, PriceType.LC, null, new ItemStack(352), WolfMount.class),
+	Golem("Golem", 2500, PriceType.LC, null, new ItemStack(265), IronGolemMount.class),
+	HORSE("Cheval", 2500, PriceType.LC, null, new ItemStack(383, 1, (short) 100), HorseMount.class),
+	Pig("Cochon", 2000, PriceType.LC, null, new ItemStack(398), PigMount.class),
+	Rabbit("Lapin", 1500, PriceType.LC, null, new ItemStack(415), RabbitMount.class),
+	Sheep("Mouton", 1500, PriceType.LC, RankType.VIP, new ItemStack(35, 1, (short) 10), SuperSheep.class),
+	SKELETONHORSE(
+			"Cheval Squelette",
+			2000,
+			PriceType.LC,
+			RankType.VIPPLUS,
+			new ItemStack(397, 1, (short) 1),
+			SkeletonHorseMount.class),
+	Slime("Slime", 1500, PriceType.LC, null, new ItemStack(341), SlimeMount.class),
+	Spider("Araignée", 2500, PriceType.LC, null, new ItemStack(30), SpiderMount.class),
+	Wither("Wither", 5000, PriceType.LC, RankType.EPICVIP, new ItemStack(397, 1, (short) 1), WitherMount.class),
+	ZOMBIEHORSE(
+			"Cheval Zombie",
+			1500,
+			PriceType.LC,
+			RankType.EPICVIP,
+			new ItemStack(397, 1, (short) 2),
+			ZombieHorseMount.class);
 
+	public static ItemStack createItem(final Material leatherPiece, final String displayName, final Color color) {
+		final ItemStack item = new ItemStack(leatherPiece);
+		final LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+		meta.setDisplayName(displayName);
+		if (color != null)
+			meta.setColor(Color.fromRGB(color.asRGB()));
+		item.setItemMeta(meta);
+		return item;
+	}
 
+	private Disguise				disguise;
+	MysteryItem						item;
+	private ItemStack				itemStack;
+	private String					name;
+	private int						price;
+	private PriceType				priceType;
+	private Class<? extends Mount>	type;
 
+	private RankType				vipLevel;
 
-	
-	private Disguise disguise;
-	private String name;
-	private int price;
-	private PriceType priceType;
-	private RankType vipLevel;
-	private ItemStack itemStack;
-	private Class<? extends Mount> type;
-	MysteryItem item;
-
-	private MountsUtils(String name,int price,PriceType priceType,RankType vipLevel,ItemStack itemStack,Class<? extends Mount> type) {
+	private MountsUtils(final String name, final int price, final PriceType priceType, final RankType vipLevel,
+			final ItemStack itemStack, final Class<? extends Mount> type) {
 		this.name = name;
 		this.price = price;
 		this.priceType = priceType;
@@ -66,55 +86,44 @@ public enum MountsUtils {
 		this.type = type;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public int getPrice() {
-		return price;
-	}
-	
-	public PriceType getPriceType() {
-		return priceType;
-	}
-	
-	public RankType getVipLevel() {
-		return vipLevel;
-	}
-	
-	public ItemStack getItemStack() {
-		return itemStack;
-	}
-	
-	public void setItem(MysteryItem item) {
-		this.item = item;
-	}
-	
-	public MysteryItem getItem() {
-		return item;
-	}
-	
-	public Class<? extends Mount> getType() {
-		return type;
-	}
-	
-	public void setDisguise(Disguise disguise) {
-		this.disguise = disguise;
-	}
-	
 	public Disguise getDisguise() {
-		return disguise.clone();
+		return this.disguise.clone();
 	}
 
-	public static ItemStack createItem(Material leatherPiece, String displayName, Color color) {
-		ItemStack item = new ItemStack(leatherPiece);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		meta.setDisplayName(displayName);
-		if (color != null)
-		meta.setColor(Color.fromRGB(color.asRGB()));
-		item.setItemMeta(meta);
-		return item;
+	public MysteryItem getItem() {
+		return this.item;
+	}
+
+	public ItemStack getItemStack() {
+		return this.itemStack;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public int getPrice() {
+		return this.price;
+	}
+
+	public PriceType getPriceType() {
+		return this.priceType;
+	}
+
+	public Class<? extends Mount> getType() {
+		return this.type;
+	}
+
+	public RankType getVipLevel() {
+		return this.vipLevel;
+	}
+
+	public void setDisguise(final Disguise disguise) {
+		this.disguise = disguise;
+	}
+
+	public void setItem(final MysteryItem item) {
+		this.item = item;
 	}
 
 }
-

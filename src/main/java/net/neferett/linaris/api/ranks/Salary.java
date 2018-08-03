@@ -12,16 +12,16 @@ public class Salary extends ObjectSerializable {
 	@Getter
 	short	salary;
 	@Getter
-	short	time;
+	int		time;
 
-	public Salary(final JSONObject o) throws JSONException {
-		this((short) o.getInt("salary"), (short) o.getInt("time"));
-	}
-
-	public Salary(final short time, final short salary) {
+	public Salary(final int time, final short salary) {
 		super("ObjectSerializable@3");
 		this.time = time;
 		this.salary = salary;
+	}
+
+	public Salary(final JSONObject o) throws JSONException {
+		this(o.getInt("time"), (short) o.getInt("salary"));
 	}
 
 	@Override

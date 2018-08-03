@@ -124,7 +124,7 @@ public class RankCommand extends CommandHandler {
 
 			@Override
 			public void editAttribute(final Player p, final List<String> arg) {
-				this.attribute = new Salary(Short.valueOf(arg.get(0)), Short.valueOf(arg.get(1)));
+				this.attribute = new Salary(Integer.valueOf(arg.get(0)), Short.valueOf(arg.get(1)));
 			}
 
 		}), TABLIST("tablist", new ActionRanks<String, String>() {
@@ -150,8 +150,6 @@ public class RankCommand extends CommandHandler {
 				this.a = () -> {
 					final PlayerData pd = BukkitAPI.get().getPlayerDataManager().getPlayerData("alphaTest1");
 					pd.setRank(build());
-					System.out.println("toto");
-					System.out.println(pd.getRank().getName());
 					CommandHandler.getCmds().forEach(e -> {
 						if (e.getPredicateOnPLayerData().test(pd))
 							this.player.sendMessage("§7Commande §f: §e" + e.getCmd() + " §aAutorisée");
@@ -168,9 +166,8 @@ public class RankCommand extends CommandHandler {
 					(String) PREFIX.getAction().getAttribute(), (String) TABLIST.getAction().getAttribute(),
 					(int) VIPLEVEL.getAction().getAttribute(), (int) RANKMOD.getAction().getAttribute(),
 					(Character) Color.getAction().getAttribute(), (String) COLORLOGO.getAction().getAttribute(),
-					(String) LOGO.getAction().getAttribute(), (int) TABLVL.getAction().getAttribute(),
-					(Kit) KIT.getAction().getAttribute(), (Double) MULTIPLIER.getAction().getAttribute(),
-					(Salary) SALARY.getAction().getAttribute());
+					(String) LOGO.getAction().getAttribute(), (int) TABLVL.getAction().getAttribute(), null,
+					(Double) MULTIPLIER.getAction().getAttribute(), (Salary) SALARY.getAction().getAttribute());
 		}
 
 		@SuppressWarnings("unchecked")
