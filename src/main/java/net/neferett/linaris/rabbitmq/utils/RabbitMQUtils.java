@@ -11,9 +11,9 @@ import com.rabbitmq.client.ConnectionFactory;
 public class RabbitMQUtils {
 
 	private static Connection	connection;
-	private static String		rabbitHost		= "149.202.65.5";
+	private static String		rabbitHost		= "127.0.0.1";
 
-	private static String		rabbitPassword	= "vrlctuk";
+	private static String		rabbitPassword	= "toto";
 
 	private static String		rabbitUsername	= "admin";
 
