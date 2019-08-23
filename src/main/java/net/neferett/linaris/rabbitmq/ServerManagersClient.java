@@ -13,18 +13,16 @@ public class ServerManagersClient extends RabbitMQRCPClient {
 	public ServerManagersClient() throws Exception {
 		
 		BukkitAPI api = BukkitAPI.get();
-		
-		
+
 		JSONObject json = new JSONObject();
 		json.put("gameName", api.getServerInfos().getGameName());
 		json.put("ip", BukkitAPI.ip);
 		json.put("port", Bukkit.getServer().getPort());
-		
 		setRequestQueueName("serverm");
 		setMessage(json);
-		
+
 		send();
-		
+
 		ServerInfo infos = api.getServerInfos();
 		infos.setServerName(getCallback().getString("serverName"));
 		ServerUtils.changeServerName(infos.getServerName());

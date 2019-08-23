@@ -159,7 +159,7 @@ public class PlayerData extends PlayerDataAbstract {
 
 	public RankAPI getGeneralRank() {
 		if (!this.contains("rank"))
-			this.set("rank", Integer.toString(0));
+			this.set("rank", Integer.toString(1));
 		return RankManager.getInstance().getRank(this.getInt("rank"));
 	}
 

@@ -243,12 +243,12 @@ public class BukkitAPI extends JavaPlugin {
 	public void initServer() {
 		this.getTasksManager().addTask(() -> {
 			try {
-				new ServerManagersClient();
 				this.registerServer();
 				new RPCServersManager(this.getServerInfos().getServerName());
 				new PlayerEffectMessaging();
 
 				this.rm = new RankManager();
+				new ServerManagersClient();
 
 			} catch (final Exception e) {
 				e.printStackTrace();
@@ -317,7 +317,7 @@ public class BukkitAPI extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new AnvilItemRenameListener(), this);
 		this.getServer().getPluginManager().registerEvents(new PetListener(), this);
 		this.getServer().getPluginManager().registerEvents(new GamePosHider(), this);
-		this.getCommand("sendsignal").setExecutor(new SendSignalCommand("149.202.65.5", 17005));
+//		this.getCommand("sendsignal").setExecutor(new SendSignalCommand("149.202.65.5", 17005));
 
 		this.getServer().getPluginManager().registerEvents(new PlayerConnectionListener(), this);
 

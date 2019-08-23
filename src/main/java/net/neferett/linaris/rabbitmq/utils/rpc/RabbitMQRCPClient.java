@@ -52,13 +52,11 @@ public class RabbitMQRCPClient {
 
 		connection = RabbitMQUtils.getConnection();
 		channel = connection.createChannel();
-
 		replyQueueName = channel.queueDeclare().getQueue();
 		consumer = new QueueingConsumer(channel);
 		channel.basicConsume(replyQueueName, true, consumer);
 
 		this.callback = call(message);
-
 		close();
 	}
 
@@ -77,10 +75,13 @@ public class RabbitMQRCPClient {
 		while (true) {
 			QueueingConsumer.Delivery delivery = consumer.nextDelivery();
 			if (delivery.getProperties().getCorrelationId().equals(corrId)) {
+				System.out.println(new String(delivery.getBody()));
 				response = new String(delivery.getBody());
 				break;
 			}
 		}
+
+		System.out.println(response);
 
 		return new JSONObject(response);
 	}
