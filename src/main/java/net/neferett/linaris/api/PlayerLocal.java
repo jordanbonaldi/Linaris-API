@@ -145,6 +145,7 @@ public class PlayerLocal extends PlayerDataAbstract {
 		if (BukkitAPI.get().isApi() || BukkitAPI.get().isScoreload()) {
 			if (this.teamplayer.containsKey(this.playerID))
 				this.teamplayer.get(this.playerID).setPrefix(prefix);
+
 			return;
 		}
 		if (this.team != null)

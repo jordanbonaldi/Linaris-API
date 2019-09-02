@@ -39,7 +39,7 @@ public class PlayerConnectionListener implements Listener {
 			}, 20 * 3);
 	}
 
-	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(final PlayerJoinEvent event) {
 
 		final Player player = event.getPlayer();
@@ -48,7 +48,7 @@ public class PlayerConnectionListener implements Listener {
 
 		event.setJoinMessage(null);
 
-		if (!player.getAddress().getAddress().getHostAddress().equals("149.202.65.5")) {
+		if (!player.getAddress().getAddress().getHostAddress().equals("163.172.82.135")) {
 			event.getPlayer().kickPlayer("§cMerci de vous connecter avec play.universeven.fr !");
 			return;
 		}
@@ -59,8 +59,7 @@ public class PlayerConnectionListener implements Listener {
 			if ((pd.getRank().getVipLevel() >= 4 || pd.getRank().getModerationLevel() >= 1)
 					&& API.getInstance().isAnnonce())
 				Bukkit.broadcastMessage(pd.getRank().getPrefix(pd) + player.getName() + " §6§oa rejoint !");
-			BukkitAPI.get().getPlayerLocalManager().getPlayerLocal(player.getName())
-					.setPrefix(pd.getRank().getTablist(pd));
+			BukkitAPI.get().getPlayerLocalManager().getPlayerLocal(player.getName()).setPrefix(pd.getRank().getTablist(pd));
 		}
 
 		if (pd.contains("invisible") && pd.getBoolean("invisible")) {

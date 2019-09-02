@@ -105,7 +105,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.20</version>
+			<version>1.18.4</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -134,7 +134,7 @@
 			<artifactId>spigot</artifactId>
 			<version>1.8.8-R0.1-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>/home/jordan/Bureau/Libs/spigot.jar</systemPath>
+			<systemPath>C:/Users/Jordan/iCloudDrive/Documents/work/Hyconia/Libs/spigot.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -142,7 +142,7 @@
 			<artifactId>lib</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/home/jordan/Bureau/Libs/ProtocolLib.jar</systemPath>
+			<systemPath>C:/Users/Jordan/iCloudDrive/Documents/work/Hyconia/Libs/ProtocolLib.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -150,7 +150,7 @@
 			<artifactId>wrapper</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/home/jordan/Bureau/Libs/PacketWrapper.jar</systemPath>
+			<systemPath>C:/Users/Jordan/iCloudDrive/Documents/work/Hyconia/Libs/PacketWrapper.jar</systemPath>
 		</dependency>
 
 	</dependencies>

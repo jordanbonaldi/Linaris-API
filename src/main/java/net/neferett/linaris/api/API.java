@@ -154,6 +154,7 @@ public abstract class API extends JavaPlugin {
 			@SuppressWarnings("rawtypes")
 			final Constructor constuctor = clazz.getDeclaredConstructor(BukkitAPI.class);
 			constuctor.newInstance(BukkitAPI.get());
+			BukkitAPI.get().setScoreload(true);
 		} catch (final NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

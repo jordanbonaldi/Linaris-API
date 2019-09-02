@@ -21,7 +21,7 @@ public class RPCServersManager extends RabbitMQRCPServer{
 	public JSONObject onMessage(JSONObject message) throws Exception {
 		
 		String type = message.getString("type");
-		
+
 		JSONObject callback = new JSONObject();
 	
 		if (type.equals("soloconnect")) {

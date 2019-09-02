@@ -9,6 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Predicate;
 
+import net.neferett.socket.api.FastSendMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Damageable;
@@ -204,7 +205,6 @@ public class BukkitAPI extends JavaPlugin {
 	}
 
 	public void heartbeat() {
-
 		try {
 			final String bungeename = this.getServerInfos().getServerName();
 			final Jedis rb_jedis = this.getConnector().getBungeeResource();
@@ -226,7 +226,6 @@ public class BukkitAPI extends JavaPlugin {
 			object.put("canSee", String.valueOf(this.getServerInfos().canSee()));
 			object.put("ip", ip);
 			object.put("port", String.valueOf(this.getServer().getPort()));
-
 			new RabbitMQMessagingClient("servers", object);
 			final Jedis jedis = this.getConnector().getBungeeResource();
 			try {
@@ -236,19 +235,22 @@ public class BukkitAPI extends JavaPlugin {
 				jedis.close();
 			} catch (final Exception ignored) {}
 		} catch (final Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
 	public void initServer() {
 		this.getTasksManager().addTask(() -> {
 			try {
+				new ServerManagersClient();
+
 				this.registerServer();
+
 				new RPCServersManager(this.getServerInfos().getServerName());
 				new PlayerEffectMessaging();
 
 				this.rm = new RankManager();
-				new ServerManagersClient();
+
 
 			} catch (final Exception e) {
 				e.printStackTrace();
@@ -297,6 +299,8 @@ public class BukkitAPI extends JavaPlugin {
 			final JSONObject object = new JSONObject();
 			object.put("type", "stop");
 			object.put("servName", this.getServerInfos().getServerName());
+			new FastSendMessage("127.0.0.1", 12000, "stop " + this.getDataFolder()
+					.getAbsolutePath().replace(this.getDataFolder().getPath(), "\n")).build();
 			new RabbitMQMessagingClient("servers", object);
 			RabbitMQUtils.getConnection().close();
 		} catch (final Exception e) {
@@ -402,10 +406,7 @@ public class BukkitAPI extends JavaPlugin {
 		LoggerUtils.info("Trying to register server to the proxy");
 		this.heartbeat();
 
-		TaskManager.scheduleSyncRepeatingTask("heart", () -> {
-
-			this.heartbeat();
-		}, 0, this.getConfig().getInt("refresh"));
+		TaskManager.scheduleSyncRepeatingTask("heart", this::heartbeat, 0, this.getConfig().getInt("refresh"));
 
 		this.serverRegistered = true;
 	}

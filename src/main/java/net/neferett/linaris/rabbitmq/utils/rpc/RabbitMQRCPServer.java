@@ -18,7 +18,9 @@ public abstract class RabbitMQRCPServer implements Runnable {
 	private QueueingConsumer consumer;
 	
 	public RabbitMQRCPServer(String replyQueueName) throws Exception {
-		
+
+		System.out.println(replyQueueName);
+
 		this.replyQueueName = replyQueueName;
 		
 	    connection = RabbitMQUtils.getConnection();
@@ -45,7 +47,9 @@ public abstract class RabbitMQRCPServer implements Runnable {
 			while (true) {
 				
 			    QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-	
+
+			    System.out.println("receive");
+
 			    BasicProperties props = delivery.getProperties();
 			    BasicProperties replyProps = new BasicProperties
 			                                     .Builder()
