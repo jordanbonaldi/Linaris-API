@@ -48,11 +48,6 @@ public class PlayerConnectionListener implements Listener {
 
 		event.setJoinMessage(null);
 
-		if (!player.getAddress().getAddress().getHostAddress().equals("163.172.82.135")) {
-			event.getPlayer().kickPlayer("§cMerci de vous connecter avec play.universeven.fr !");
-			return;
-		}
-
 		final PlayerData pd = BukkitAPI.get().getPlayerDataManager().getPlayerData(player.getName());
 
 		if (BukkitAPI.get().isApi()) {
