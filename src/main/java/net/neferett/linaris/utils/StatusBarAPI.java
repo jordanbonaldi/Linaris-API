@@ -116,7 +116,7 @@ public class StatusBarAPI {
 
             while (toRefresh.hasNext()) {
                 Entry<Player, FakeBoss> entry = toRefresh.next();
-                if (entry == null) continue;// Pourquoi on arrive à des null là dessus ???
+                if (entry == null) continue;
                 Player player = entry.getKey();
                 FakeBoss boss = entry.getValue();
                 // Player offline;
