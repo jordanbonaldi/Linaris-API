@@ -37,7 +37,7 @@ public class ShopMessage {
 	}
 
 	public static void itemBoughtTokens(final Player player, final String name, final double price) {
-		sendToPlayer(player, "§6Achat r\u00e9ussi §a" + name + " §c-" + price + "Tokens");
+		sendToPlayer(player, "§6Achat r\u00e9ussi §a" + name + " §e-" + price + "Coins");
 		player.playSound(player.getLocation(), Sound.VILLAGER_YES, 0.5f, 1.0f);
 	}
 
@@ -72,7 +72,7 @@ public class ShopMessage {
 	}
 
 	public static void itemNotEnoughTokens(final Player player) {
-		sendToPlayer(player, "§cVous ne poss\u00e9dez pas assez de: §6Senzus§c");
+		sendToPlayer(player, "§cVous ne poss\u00e9dez pas assez de: §eCoins§c");
 		player.playSound(player.getLocation(), Sound.VILLAGER_NO, 0.5f, 1.0f);
 	}
 

@@ -1,5 +1,6 @@
 package net.neferett.linaris.logo.gui.color;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,18 +37,14 @@ public class ColorItems extends InstantShopItem {
 		return pd.contains("color-" + this.colorname);
 	}
 
-	public List<String> loadPreview() {
-		if (this.pd.getRank().getVipLevel() == 3)
-			return Arrays.asList("", "§7Aperçu§f:",
-					this.pd.getRank().getPrefix().contains("%c")
-							? this.pd.getRank().getPrefix().replace("%c", this.color) + this.name
-							: "§cAucun aperçu disponible");
-		else
-			return Arrays.asList("", "§7Aperçu§f:",
-					this.pd.getRank().getPrefix().contains("%c") && this.pd.getRank().getPrefix().contains("%s")
-							? this.pd.getRank().getPrefix().replace("%c", this.color).replace("%s",
-									this.color.contains("k") ? "d" : this.logo) + this.name
-							: "§cAucun aperçu disponible");
+	private List<String> loadPreview() {
+		String prefix = this.pd.getRank().getPrefix().replace("%c", this.color).replace("%s",
+				this.color.contains("k") ? "d" : this.logo);
+
+		if (prefix.charAt(prefix.length() - 2) == 'k')
+			prefix = prefix.substring(0, prefix.length() - 3) + " ";
+
+		return Arrays.asList("", "§7Aperçu§f:", prefix + this.name);
 	}
 
 	@Override

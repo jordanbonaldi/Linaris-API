@@ -29,23 +29,23 @@ import net.neferett.linaris.mistery.MysteryItem.RankType;
 
 @SuppressWarnings("deprecation")
 public enum PetsUtils {
-	Bat("Chauve-Souris", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 65), PetBat.class),
-	Chat("Chat", 1400, PriceType.EC, null, new ItemStack(383, 1, (short) 90), PetOcelot.class),
-	Chicken("Poulet", 1350, PriceType.EC, null, new ItemStack(383, 1, (short) 93), PetChicken.class),
-	Cow("Vache", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 92), PetCow.class),
-	Creeper("Creeper", 2500, PriceType.EC, RankType.EPICVIP, new ItemStack(383, 1, (short) 50), PetCreeper.class),
-	EnderMite("Endermite", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 67), PetEnderMite.class),
-	Lapin("Lapin", 1500, PriceType.EC, RankType.VIP, new ItemStack(383, 1, (short) 11), PetLapin.class),
-	Magma("MagmaCube", 1400, PriceType.EC, null, new ItemStack(383, 1, (short) 62), PetMagMaCube.class),
-	MooshroomCow("Vache champignon", 1300, PriceType.EC, null, new ItemStack(383, 1, (short) 96), PetMushroomCow.class),
-	Pig("Cochon", 1250, PriceType.EC, null, new ItemStack(383, 1, (short) 90), PetPig.class),
-	Sheep("Mouton", 1350, PriceType.EC, null, new ItemStack(383, 1, (short) 91), PetSheep.class),
-	SilverFish("SilverFish", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 60), PetSilverFish.class),
-	Slime("Slime", 1200, PriceType.EC, null, new ItemStack(383, 1, (short) 55), PetSlime.class),
-	Villager("Villageois", 2500, PriceType.EC, RankType.VIP, new ItemStack(383, 1, (short) 120), PetVillager.class),
-	Wither("Wither", 4500, PriceType.EC, RankType.EPICVIP, new ItemStack(383, 1, (short) 58), PetWither.class),
-	Wolf("Chien", 1500, PriceType.EC, null, new ItemStack(383, 1, (short) 95), PetWolf.class),
-	Zombie("Zombie", 2500, PriceType.EC, RankType.VIPPLUS, new ItemStack(383, 1, (short) 54), PetZombie.class);
+	Bat("Chauve-Souris", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 65), PetBat.class),
+	Chat("Chat", 5000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 90), PetOcelot.class),
+	Chicken("Poulet", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 93), PetChicken.class),
+	Cow("Vache", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 92), PetCow.class),
+	Creeper("Creeper", 3000, PriceType.TOKEN, RankType.EPICVIP, new ItemStack(383, 1, (short) 50), PetCreeper.class),
+	EnderMite("Endermite", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 67), PetEnderMite.class),
+	Lapin("Lapin", 7000, PriceType.TOKEN, RankType.VIP, new ItemStack(383, 1, (short) 11), PetLapin.class),
+	Magma("MagmaCube", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 62), PetMagMaCube.class),
+	MooshroomCow("Vache champignon", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 96), PetMushroomCow.class),
+	Pig("Cochon", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 90), PetPig.class),
+	Sheep("Mouton", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 91), PetSheep.class),
+	SilverFish("SilverFish", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 60), PetSilverFish.class),
+	Slime("Slime", 3000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 55), PetSlime.class),
+	Villager("Villageois", 7000, PriceType.TOKEN, RankType.VIP, new ItemStack(383, 1, (short) 120), PetVillager.class),
+	Wither("Wither", 30000, PriceType.TOKEN, RankType.EPICVIP, new ItemStack(383, 1, (short) 58), PetWither.class),
+	Wolf("Chien", 10000, PriceType.TOKEN, null, new ItemStack(383, 1, (short) 95), PetWolf.class),
+	Zombie("Zombie", 3000, PriceType.TOKEN, RankType.VIPPLUS, new ItemStack(383, 1, (short) 54), PetZombie.class);
 
 	public static ItemStack createItem(final Material leatherPiece, final String displayName, final Color color) {
 		final ItemStack item = new ItemStack(leatherPiece);

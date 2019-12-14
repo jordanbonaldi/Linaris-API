@@ -71,24 +71,22 @@ public class RankAPI extends ObjectSerializable {
 				salary == null ? null : new Salary(salary));
 	}
 
+	private String prefixer(String pref, PlayerData pd) {
+		String prefix =  pref.replace("%c", pd.contains("logocolor") ? pd.get("logocolor") : this.logocolor)
+				.replace("%s", pd.contains("logo") ? pd.get("logo") : this.logo);
+
+		if (prefix.charAt(prefix.length() - 2) == 'k')
+			prefix = prefix.substring(0, prefix.length() - 3) + " ";
+
+		return prefix;
+	}
+
 	public String getPrefix(final PlayerData pd) {
-		if (this.prefix.contains("%c") && this.prefix.contains("%s"))
-			return this.prefix.replace("%c", pd.contains("logocolor") ? pd.get("logocolor") : this.logocolor)
-					.replace("%s", pd.contains("logo") ? pd.get("logo") : this.logo);
-		else if (this.prefix.contains("%c"))
-			return this.prefix.replace("%c", pd.contains("logocolor") ? pd.get("logocolor") : this.logocolor);
-		else
-			return this.prefix;
+		return this.prefixer(this.prefix, pd);
 	}
 
 	public String getTablist(final PlayerData pd) {
-		if (this.tablist.contains("%c") && this.tablist.contains("%s"))
-			return this.tablist.replace("%c", pd.contains("logocolor") ? pd.get("logocolor") : this.logocolor)
-					.replace("%s", pd.contains("logo") ? pd.get("logo") : this.logo);
-		else if (this.tablist.contains("%c"))
-			return this.tablist.replace("%c", pd.contains("logocolor") ? pd.get("logocolor") : this.logocolor);
-		else
-			return this.tablist;
+		return this.prefixer(this.tablist, pd);
 	}
 
 	@Override

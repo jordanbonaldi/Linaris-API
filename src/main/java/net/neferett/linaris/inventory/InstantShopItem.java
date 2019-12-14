@@ -46,12 +46,7 @@ public abstract class InstantShopItem {
 	}
 
 	public String getColoredPrice(final Player p) {
-		if (this.priceType == PriceType.EC)
-			return "§e" + this.price + "Coins";
-		else if (this.priceType == PriceType.LC)
-			return "§b" + this.price + "Crédits";
-		else
-			return "§c" + this.price + "Senzus";
+		return "§e" + this.price + "Coins";
 	}
 
 	public List<String> getDescription() {
@@ -137,11 +132,11 @@ public abstract class InstantShopItem {
 
 		final Player p = Bukkit.getPlayer(pd.getPlayername());
 
-		if (this.priceType == PriceType.EC) {
+		if (this.priceType == PriceType.TOKEN) {
 
-			if (pd.getEC() >= this.price) {
+			if (pd.getTokens() >= this.price) {
 				ShopMessage.itemBoughtEC(p, ChatColor.stripColor(this.getName()), this.price);
-				pd.withdrawCoins(this.price, null);
+				pd.setInt("tokens", (int) (pd.getTokens() - this.price));
 				this.onBuy(pd);
 			} else
 				ShopMessage.itemNotEnoughGolds(Bukkit.getPlayer(pd.getPlayername()));

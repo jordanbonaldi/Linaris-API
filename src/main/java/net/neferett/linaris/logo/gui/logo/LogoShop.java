@@ -29,30 +29,30 @@ public class LogoShop extends GuiScreen {
 	@Override
 	public void drawScreen() {
 
-		this.setItem(new LogoItems("l0", "✈", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 1);
-		this.setItem(new LogoItems("l1", "✁", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 2);
-		this.setItem(new LogoItems("l2", "✂", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 3);
-		this.setItem(new LogoItems("l3", "✆", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 4);
-		this.setItem(new LogoItems("l4", "✇", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 5);
-		this.setItem(new LogoItems("l5", "✎", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 6);
-		this.setItem(new LogoItems("l6", "✔", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 7);
-		this.setItem(new LogoItems("l7", "✖", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 8);
-		this.setItem(new LogoItems("l8", "✉", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 9);
-		this.setItem(new LogoItems("l9", "✤", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 1);
-		this.setItem(new LogoItems("l10", "✠", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 2);
-		this.setItem(new LogoItems("l11", "☶", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 3);
-		this.setItem(new LogoItems("l12", "☵", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 4);
-		this.setItem(new LogoItems("l13", "☯", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 5);
-		this.setItem(new LogoItems("l14", "☬", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 6);
-		this.setItem(new LogoItems("l15", "☢", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 7);
-		this.setItem(new LogoItems("l16", "☠", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 8);
-		this.setItem(new LogoItems("l17", "±", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 9);
-		this.setItem(new LogoItems("l18", "Ω", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 1);
-		this.setItem(new LogoItems("l18", "Φ", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 2);
-		this.setItem(new LogoItems("l18", "Θ", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 3);
-		this.setItem(new LogoItems("l18", "♚", 80, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 4);
-		this.setItem(new LogoItems("l18", "➔", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 5);
-		this.setItem(new LogoItems("l18", "❤", 120, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 6);
+		this.setItem(new LogoItems("l0", "✈", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 1);
+		this.setItem(new LogoItems("l1", "✁", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 2);
+		this.setItem(new LogoItems("l2", "✂", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 3);
+		this.setItem(new LogoItems("l3", "✆", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 4);
+		this.setItem(new LogoItems("l4", "✇", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 5);
+		this.setItem(new LogoItems("l5", "✎", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 6);
+		this.setItem(new LogoItems("l6", "✔", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 7);
+		this.setItem(new LogoItems("l7", "✖", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 8);
+		this.setItem(new LogoItems("l8", "✉", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 1, 9);
+		this.setItem(new LogoItems("l9", "✤", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 1);
+		this.setItem(new LogoItems("l10", "✠", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 2);
+		this.setItem(new LogoItems("l11", "☶", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 3);
+		this.setItem(new LogoItems("l12", "☵", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 4);
+		this.setItem(new LogoItems("l13", "☯", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 5);
+		this.setItem(new LogoItems("l14", "☬", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 6);
+		this.setItem(new LogoItems("l15", "☢", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 7);
+		this.setItem(new LogoItems("l16", "☠", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 8);
+		this.setItem(new LogoItems("l17", "±", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 2, 9);
+		this.setItem(new LogoItems("l18", "Ω", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 1);
+		this.setItem(new LogoItems("l18", "Φ", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 2);
+		this.setItem(new LogoItems("l18", "Θ", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 3);
+		this.setItem(new LogoItems("l18", "♚", 900, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 4);
+		this.setItem(new LogoItems("l18", "➔", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 5);
+		this.setItem(new LogoItems("l18", "❤", 2500, this.pd, new ItemBuilder(Material.ANVIL), this.name), 3, 6);
 
 		this.setItemLine(new ItemBuilder(Material.ARROW).setTitle("§fRevenir en arrière").build(), 5, 9);
 	}

@@ -27,8 +27,8 @@ import net.neferett.linaris.utils.file;
 import net.neferett.linaris.utils.tasksmanager.TaskManager;
 
 public class PlayerConnectionListener implements Listener {
-	static String	footer	= "§6Notre site§f: §bhttp://battlemine.fr/ §f- §6Notre Twitter§f: §c@LoghosLRS \n §6Boutique sur§f: §b§nhttp://battlemine.fr/shop/";
-	static String	header	= "§eVous êtes connecté sur §aplay.battlemine.fr \n §6Rejoignez nous sur Discord§f: §ahttps://discord.gg/WVTJ78";
+	static String	footer	= "§6Notre site§f: §bhttp://battlemine.fr/ §6Boutique sur§f: §b§nhttp://battlemine.fr/shop/";
+	static String	header	= "§eVous êtes connecté sur §aplay.battlemine.fr \n §6Rejoignez nous sur Discord§f: §ahttps://discord.gg/WNs3Ut4";
 
 	@EventHandler
 	public void ConnectionSpec(final SoloConnectionEvent e) {

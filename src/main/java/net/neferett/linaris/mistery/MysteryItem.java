@@ -3,6 +3,8 @@ package net.neferett.linaris.mistery;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.neferett.linaris.api.*;
+import net.neferett.linaris.api.ranks.RankManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -10,10 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import lombok.Setter;
 import net.neferett.linaris.BukkitAPI;
-import net.neferett.linaris.api.Games;
-import net.neferett.linaris.api.ItemInfo;
-import net.neferett.linaris.api.PlayerData;
-import net.neferett.linaris.api.ShopItemsManager;
 import net.neferett.linaris.api.ranks.RankAPI;
 import net.neferett.linaris.utils.ShopMessage;
 import net.neferett.linaris.utils.StringUtils;
@@ -23,7 +21,7 @@ import net.neferett.linaris.utils.gui.GuiScreen;
 public abstract class MysteryItem {
 
 	public enum PriceType {
-		EC, LC, Senzus
+		EC, LC, TOKEN
 	}
 
 	public enum RankType {
@@ -60,7 +58,7 @@ public abstract class MysteryItem {
 		else if (this.priceType == PriceType.LC)
 			return "§b" + this.price + "Crédits";
 		else
-			return "§e" + this.price + "Senzus";
+			return "§e" + this.price + "Coins";
 	}
 
 	public String getColoredRank() {
@@ -104,8 +102,11 @@ public abstract class MysteryItem {
 		if (this.getDescription() != null && this.getDescription().length() > 1)
 			strings.addAll(StringUtils.wrap(StringUtils.wrap(this.getDescription(), 25)));
 
-		if (this.vipLevel != 0)
-			strings.add("§cRéservé aux " + this.getColoredRank());
+		RankAPI rank = RankManager.getInstance().getRanks().stream()
+				.filter(e -> e.getVipLevel() == this.vipLevel).findFirst().orElse(null);
+
+		if (rank != null && this.vipLevel != 0)
+			strings.add("§cRéservé aux §" + rank.getColor() + rank.getName());
 		else {
 			strings.add("");
 			if (ShopItemsManager.haveItem(p.getName().toLowerCase(), String.valueOf(Games.LOBBY.getID()), this.getID()))
@@ -166,11 +167,11 @@ public abstract class MysteryItem {
 		final PlayerData pd = BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName().toLowerCase());
 		final String name = p.getName().toLowerCase();
 
-		if (this.priceType == PriceType.EC) {
+		if (this.priceType == PriceType.TOKEN) {
 
-			if (pd.getEC() >= this.price) {
-				ShopMessage.itemBoughtEC(p, ChatColor.stripColor(this.getName()), this.price);
-				pd.withdrawCoins(this.price, null);
+			if (pd.getTokens() >= this.price) {
+				ShopMessage.itemBoughtTokens(p, ChatColor.stripColor(this.getName()), this.price);
+				pd.setInt("tokens", (int) (pd.getTokens() - this.price));
 				ShopItemsManager.setItem(name, String.valueOf(Games.LOBBY.getID()), new ItemInfo(this.getID(), 1));
 			} else
 				ShopMessage.itemNotEnoughGolds(p);
@@ -188,41 +189,13 @@ public abstract class MysteryItem {
 		if (this.vipLevel != 0) {
 
 			final RankAPI rank = BukkitAPI.get().getPlayerDataManager().getPlayerData(p.getName()).getRank();
+			RankAPI r = RankManager.getInstance().getRanks().stream()
+					.filter(e -> e.getVipLevel() == this.vipLevel).findFirst().orElse(null);
 
-			if (this.vipLevel == 1)
-				if (rank.getVipLevel() >= 1) {
-					this.onUse(p, true);
-					return;
-				} else
-					p.sendMessage("§cRéservé aux " + this.getColoredRank());
-
-			if (this.vipLevel == 2)
-				if (rank.getVipLevel() >= 2) {
-					this.onUse(p, true);
-					return;
-				} else
-					p.sendMessage("§cRéservé aux " + this.getColoredRank());
-
-			if (this.vipLevel == 3)
-				if (rank.getVipLevel() >= 3) {
-					this.onUse(p, true);
-					return;
-				} else
-					p.sendMessage("§cRéservé aux " + this.getColoredRank());
-
-			if (this.vipLevel == 4)
-				if (rank.getVipLevel() >= 4) {
-					this.onUse(p, true);
-					return;
-				} else
-					p.sendMessage("§cRéservé aux " + this.getColoredRank());
-
-			if (this.vipLevel == 5)
-				if (rank.getVipLevel() >= 4) {
-					this.onUse(p, true);
-					return;
-				} else
-					p.sendMessage("§cRéservé aux " + this.getColoredRank());
+			if (rank.getVipLevel() >= this.vipLevel)
+				this.onUse(p, true);
+			else
+				p.sendMessage("§cRéservé aux §" + r.getColor() + r.getName());
 
 		} else if (ShopItemsManager.haveItem(p.getName().toLowerCase(), String.valueOf(Games.LOBBY.getID()),
 				this.getID()))

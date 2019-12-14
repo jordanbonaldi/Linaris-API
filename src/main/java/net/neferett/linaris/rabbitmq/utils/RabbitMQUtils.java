@@ -12,9 +12,6 @@ public class RabbitMQUtils {
 
 	private static Connection	connection;
 	private static String		rabbitHost		= "127.0.0.1";
-
-	private static String		rabbitPassword	= "toto";
-
 	private static String		rabbitUsername	= "admin";
 
 	public static Connection getConnection() {
@@ -25,10 +22,6 @@ public class RabbitMQUtils {
 		return rabbitHost;
 	}
 
-	public static String getRabbitPassword() {
-		return rabbitPassword;
-	}
-
 	public static String getRabbitUsername() {
 		return rabbitUsername;
 	}
@@ -37,7 +30,7 @@ public class RabbitMQUtils {
 		final ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost(getRabbitHost());
 		factory.setUsername(getRabbitUsername());
-		factory.setPassword(getRabbitPassword());
+		factory.setPassword(System.getenv("REDIS_PASSWORD"));
 		// factory.setVirtualHost("/");
 		factory.setAutomaticRecoveryEnabled(true);
 		factory.setNetworkRecoveryInterval(10000);

@@ -278,7 +278,7 @@ public class BukkitAPI extends JavaPlugin {
 		// RedisServer.auth, 0));
 		// connector.setup();
 
-		this.connector = new SingleDatabaseConnector(this, RedisServer.host + ":" + RedisServer.port, RedisServer.auth);
+		this.connector = new SingleDatabaseConnector(this, RedisServer.host + ":" + RedisServer.port, System.getenv("REDIS_PASSWORD"));
 
 		this.tasksManager = new TasksExecutor();
 		new Thread(this.tasksManager, "ExecutorThread").start();

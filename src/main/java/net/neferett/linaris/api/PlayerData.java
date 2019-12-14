@@ -100,6 +100,10 @@ public class PlayerData extends PlayerDataAbstract {
 		return this.increaseCoins(-decrBy);
 	}
 
+	public double decreaseTokens(final double decrBy) {
+		return this.increaseTokens(-decrBy);
+	}
+
 	public double decreaseLC(final double decrBy) {
 		return this.increaseLC(-decrBy);
 	}
@@ -243,6 +247,15 @@ public class PlayerData extends PlayerDataAbstract {
 		pl.setGainedEC(pl.getGainedEC() + incrBy);
 		return newValue;
 	}
+	public double increaseTokens(final double incrBy) {
+		final Jedis jedis = this.plugin.getConnector().getResource();
+		final double newValue = Double.parseDouble(jedis.hget("player:" + this.playerID, "tokens")) + incrBy;
+		jedis.hset("player:" + this.playerID, "tokens", String.valueOf(newValue));
+		jedis.close();
+
+		this.playerData.put("tokens", String.valueOf(newValue));
+		return newValue;
+	}
 
 	public double increaseLC(final double incrBy) {
 		final Jedis jedis = this.plugin.getConnector().getResource();
@@ -370,6 +383,15 @@ public class PlayerData extends PlayerDataAbstract {
 				financialCallback.done(result, -famount, null);
 
 		}, "WithdrawCoinsThread").start();
+	}
+
+	public void withdrawTokens(final double famount, final FinancialCallback<Long> financialCallback) {
+		new Thread(() -> {
+			final double result = this.decreaseTokens(famount);
+			if (financialCallback != null)
+				financialCallback.done(result, -famount, null);
+
+		}, "WithdrawTokensThread").start();
 	}
 
 	public void withdrawLC(final double amount, final FinancialCallback<Long> financialCallback) {

@@ -21,7 +21,7 @@ public class ColorEffectsItems extends InstantShopItem {
 
 	public ColorEffectsItems(final String colorname, final String color, final int price, final ItemStack item,
 			final PlayerData pd, final String name) {
-		super("color-effects-" + colorname, "§7Effet §e" + color + colorname, PriceType.TOKEN, price, null, item);
+		super("color-effects-" + colorname, "§7Effet §e" + color + colorname, PriceType.EC, price, null, item);
 		if (!pd.contains("color-effects-Défaut"))
 			pd.set("color-effects-Défaut", colorname);
 		this.color = color;
@@ -38,49 +38,28 @@ public class ColorEffectsItems extends InstantShopItem {
 	}
 
 	public List<String> loadPreview() {
-		if (this.pd.getRank().getVipLevel() == 3)
-			return Arrays
-					.asList("",
-							"§7Aperçu§f:", this.pd.getRank().getPrefix().contains("%c")
-									? this.pd.getRank().getPrefix()
-											.replace(
-													"%c", !this.pd
-															.contains(
-																	"logocolor")
-																			? "§b" + this.color
-																			: (this.pd.get("logocolor").length() > 2
-																					? this.pd.get("logocolor")
-																							.substring(0,
-																									this.pd.get(
-																											"logocolor")
-																											.length()
-																											- 2)
-																					: this.pd.get("logocolor"))
-																					+ this.color)
-											+ this.name
-									: "§cAucun aperçu disponible");
-		else
-			return Arrays
-					.asList("", "§7Aperçu§f:",
-							this.pd.getRank().getPrefix().contains("%c") && this.pd.getRank().getPrefix().contains("%s")
-									? this.pd.getRank().getPrefix()
-											.replace(
-													"%c", !this.pd
-															.contains(
-																	"logocolor")
-																			? "§e" + this.color
-																			: (this.pd.get("logocolor").length() > 2
-																					? this.pd.get("logocolor")
-																							.substring(0,
-																									this.pd.get(
-																											"logocolor")
-																											.length()
-																											- 2)
-																					: this.pd.get("logocolor"))
-																					+ this.color)
-											.replace("%s", this.colorname.contains("Magic") ? "d" : this.logo)
-											+ this.name
-									: "§cAucun aperçu disponible");
+		String color = this.pd.getRank().getPrefix()
+				.replace(
+						"%c", !this.pd
+								.contains(
+										"logocolor")
+								? "§e" + this.color
+								: (this.pd.get("logocolor").length() > 2
+								? this.pd.get("logocolor")
+								.substring(0,
+										this.pd.get(
+												"logocolor")
+												.length()
+												- 2)
+								: this.pd.get("logocolor"))
+								+ this.color)
+				.replace("%s", this.colorname.contains("Magic") ? "d" : this.logo);
+
+		if (color.charAt(color.length() - 2) == 'k')
+			color = color.substring(0, color.length() - 3) + " ";
+
+		return Arrays
+				.asList("", "§7Aperçu§f:", color + this.name);
 	}
 
 	@Override
